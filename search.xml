@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>王尔德《快乐王子》写给成年人的童话</title>
-    <url>/2020/07/17/%E7%8E%8B%E5%B0%94%E5%BE%B7%E3%80%8A%E5%BF%AB%E4%B9%90%E7%8E%8B%E5%AD%90%E3%80%8B/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>书</category>
-      </categories>
-      <tags>
-        <tag>王尔德</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我们需要被讨厌的勇气</title>
     <url>/2020/07/17/%E3%80%8A%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E3%80%8B/</url>
     <content><![CDATA[<h3 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h3><p>我一般习惯在电子产品上读书，每当一个礼拜过去，app都会发布一周内我读书花了多少时间，有个很有意思的现象是：在忙碌的一周，我往往会读书大概5-6个小时，而在无所事事的一周，大概是1-2个小时。想想理由也很简单，无非是忙碌时读书相比手头的事物是一件美差事，就“见缝插针”地主动去读；而在空闲时读书相比娱乐美食睡觉是一件“食之无味，弃之可惜”的事，就不那么情愿去读。所以对于我来说，在忙碌期读的书印象反而很深。这段时间在学自己不太擅长的英语，有时深感枯燥，所以在看《被讨厌的勇气》时印象特别深。在最初看到这本书的题目时，我是不太理解什么叫“被讨厌的勇气”的，并且“勇气”这个词好像有点俗套，就带着看鸡汤文的心态翻了几页，没想到全部看完了以后，也没有产生“你说的倒好听”的想法。（前段时间还看过柏拉图的《理想国》，或许是年代久远，或者是因为文化氛围不同，不太能get到共鸣，而这本出自日本的著作就好很多）于是想把这本书的主要观点记录下来，以便万一哪天想到了可以回来看看此时的心情。</p>
@@ -488,6 +477,75 @@
 <li>%05d的输出格式会使-1的输出出现问题，所以要单独输出-1，不能用node[i].adress这样的格式输出。</li>
 </ol>
 <h2 id="My-code"><a href="#My-code" class="headerlink" title="My code"></a>My code</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">100010</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//define static linked list </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> adress;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> next;</span><br><span class="line">	<span class="comment">//the order of node in the linked list,assign invalid node maxn</span></span><br><span class="line"> 	<span class="keyword">int</span> order;</span><br><span class="line">&#125;node[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Node a,Node b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.order&lt;b.order;<span class="comment">//order by "order"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> origin_adress,n,k;</span><br><span class="line">	<span class="comment">//maybe some of nodes are of no avail,disconnected with the given data</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;maxn;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		node[i].order=maxn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;origin_adress,&amp;n,&amp;k);</span><br><span class="line">	<span class="comment">//input </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> adress;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;adress);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;node[adress].data,&amp;node[adress].next);</span><br><span class="line">		node[adress].adress=adress;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//begin with the origin_adress,check if the node is correct by order</span></span><br><span class="line">	<span class="keyword">int</span> p=origin_adress,count=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		node[p].order=count++;</span><br><span class="line">		p=node[p].next;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(node,node+maxn,cmp);</span><br><span class="line">	<span class="comment">//output</span></span><br><span class="line">	<span class="comment">//i block</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;count/k;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//the last block consider independently </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=(i+<span class="number">1</span>)*k<span class="number">-1</span>;j&gt;i*k;j--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%05d %d %05d\n"</span>,node[j].adress,node[j].data,node[j<span class="number">-1</span>].adress);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//the last block</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%05d %d "</span>,node[i*k].adress,node[i*k].data);</span><br><span class="line">		<span class="keyword">if</span>(i&lt;count/k<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%05d\n"</span>,node[(i+<span class="number">2</span>)*k<span class="number">-1</span>].adress);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(count%k==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%05d\n"</span>,node[(i+<span class="number">1</span>)*k].adress);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=count/k*k;i&lt;count;i++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(i&lt;count<span class="number">-1</span>)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%05d %d %05d\n"</span>,node[i].adress,node[i].data,node[i+<span class="number">1</span>].adress);</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%05d %d -1\n"</span>,node[i].adress,node[i].data);	</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据结构&amp;算法</category>
+      </categories>
+      <tags>
+        <tag>静态链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT A1052 Linked List Sorting</title>
+    <url>/2020/07/17/PAT%20A1052%20Linked%20List%20Sorting/</url>
+    <content><![CDATA[<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>A linked list consists of a series of structures, which are not necessarily adjacent in memory. We assume that each structure contains an integer key and a Next pointer to the next structure. Now given a linked list, you are supposed to sort the structures according to their key values in increasing order.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line contains a positive N (&lt;10<br>​5<br>​​ ) and an address of the head node, where N is the total number of nodes in memory and the address of a node is a 5-digit positive integer. NULL is represented by −1.</p>
+<p>Then N lines follow, each describes a node in the format:</p>
+<p>Address Key Next<br>where Address is the address of the node in memory, Key is an integer in [−10<br>​5<br>​​ ,10<br>​5<br>​​ ], and Next is the address of the next node. It is guaranteed that all the keys are distinct and there is no cycle in the linked list starting from the head node.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, the output format is the same as that of the input, where N is the total number of nodes in the list and all the nodes must be sorted order.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h2><p>5 00001</p>
+<p>11111 100 -1</p>
+<p>00001 0 22222</p>
+<p>33333 100000 11111</p>
+<p>12345 -1 33333</p>
+<p>22222 1000 12345</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h2><p>5 12345</p>
+<p>12345 -1 00001</p>
+<p>00001 0 11111</p>
+<p>11111 100 22222</p>
+<p>22222 1000 33333</p>
+<p>33333 100000 -1</p>
+<h2 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h2><ol>
+<li>sort排序时，第二个参数是+maxn，而不是+count，因为是静态链表按下标存储，要把所有节点排序。</li>
+<li>要注意count为0的情况，即所有节点都是无效结点。</li>
+</ol>
+<h2 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h2><p>```C++<br>#include<cstdio><br>#include<algorithm><br>const int maxn=100005;<br>using namespace std;<br>struct Node{<br>    int adress;<br>    int value;<br>    int next;<br>    int flag=0;<br>}da[maxn];<br>bool cmp(Node a,Node b)<br>{<br>    if(a.flag!=b.flag)<br>    return a.flag&gt;b.flag;<br>    else<br>    return a.value&lt;b.value;<br>}<br>int main()<br>{<br>    int n,start,adress;<br>    scanf(“%d%d”,&amp;n,&amp;start);<br>    //input<br>    for(int i=0;i&lt;n;i++)<br>    {<br>        scanf(“%d”,&amp;adress);<br>        scanf(“%d %d”,&amp;da[adress].value,&amp;da[adress].next);<br>        da[adress].adress=adress;<br>    }<br>    int p=start,count=0;<br>    while(p!=-1)<br>    {<br>        da[p].flag=1;<br>        p=da[p].next;<br>        count++;<br>    }<br>    sort(da,da+maxn,cmp);<br>    if(count==0)<br>    printf(“0 -1\n”);<br>    else<br>    printf(“%d %05d\n”,count,da[0].adress);<br>    for(int i=0;i&lt;count;i++)<br>    {<br>        if(i==count-1)<br>        printf(“%05d %d -1\n”,da[i].adress,da[i].value);<br>        else<br>        printf(“%05d %d %05d\n”,da[i].adress,da[i].value,da[i+1].adress);<br>    }<br>    return 0;<br>}</p>
+]]></content>
+      <categories>
+        <category>数据结构&amp;算法</category>
+      </categories>
+      <tags>
+        <tag>静态链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT A1032 Sharing</title>
+    <url>/2020/07/17/PAT%20A1032%20Sharing/</url>
+    <content><![CDATA[<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>To store English words, one method is to use linked lists and store a word letter by letter. To save some space, we may let the words share the same sublist if they share the same suffix. For example, loading and being are stored as showed in Figure 1.</p>
+<p>You are supposed to find the starting position of the common suffix (e.g. the position of i in Figure 1).</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line contains two addresses of nodes and a positive N (≤10<br>​5<br>​​ ), where the two addresses are the addresses of the first nodes of the two words, and N is the total number of nodes. The address of a node is a 5-digit positive integer, and NULL is represented by −1.</p>
+<p>Then N lines follow, each describes a node in the format:</p>
+<p>Address Data Next<br>whereAddress is the position of the node, Data is the letter contained by this node which is an English letter chosen from { a-z, A-Z }, and Next is the position of the next node.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each case, simply output the 5-digit starting position of the common suffix. If the two words have no common suffix, output -1 instead.</p>
+<h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h2><p>11111 22222 9</p>
+<p>67890 i 00002</p>
+<p>00010 a 12345</p>
+<p>00003 g -1</p>
+<p>12345 D 67890</p>
+<p>00002 n 00003</p>
+<p>22222 B 23456</p>
+<p>11111 L 00001</p>
+<p>23456 e 67890</p>
+<p>00001 o 00010</p>
+<h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h2><p>67890</p>
+<h2 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h2><p>00001 00002 4</p>
+<p>00001 a 10001</p>
+<p>10001 s -1</p>
+<p>00002 a 10002</p>
+<p>10002 t -1</p>
+<h2 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h2><p>-1</p>
+<h2 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h2><p>%c在读入数据时会读入空格，要小心。</p>
+<h2 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h2><p>```C++<br>#include<cstdio><br>const int maxn=100005;<br>struct Word{<br>    int adress;<br>    char data;<br>    int next;<br>    int flag=-1;<br>}word[maxn];<br>int main()<br>{<br>    int start1,start2,n;<br>    scanf(“%d %d %d”,&amp;start1,&amp;start2,&amp;n);<br>    //input<br>    for(int i=0;i&lt;n;i++)<br>    {<br>        int adress;<br>        scanf(“%d”,&amp;adress);<br>        scanf(“ %c %d”,&amp;word[adress].data,&amp;word[adress].next);<br>        word[adress].adress=adress;<br>    }<br>    //traversal<br>    int p=start1;<br>    while(p!=-1)<br>    {<br>        word[p].flag=1;<br>        p=word[p].next;<br>    }<br>//    find the same suffix<br>    p=start2;<br>//    check if the same suffix appear<br>    int flag1=0;<br>    while(p!=-1)<br>    {<br>        if(word[p].flag==1)<br>        {<br>            flag1=1;<br>            break;<br>        }<br>        p=word[p].next;<br>    }<br>    if(flag1==1)<br>    printf(“%05d\n”,p);<br>    else<br>    printf(“-1\n”);<br>    return 0;<br>}</p>
+]]></content>
       <categories>
         <category>数据结构&amp;算法</category>
       </categories>
