@@ -600,4 +600,25 @@
         <tag>静态链表</tag>
       </tags>
   </entry>
+  <entry>
+    <title>PAT A1002 A+B for Polynomials</title>
+    <url>/2020/07/17/PAT%20A1002%20A+B%20for%20Polynomials/</url>
+    <content><![CDATA[<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>This time, you are supposed to find A+B where A and B are two polynomials.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial:</p>
+<p>K N<br>​1<br>​​  a<br>​N<br>​1<br>​​<br>​​  N<br>​2<br>​​  a<br>​N<br>​2<br>​​<br>​​  … N<br>​K<br>​​  a<br>​N<br>​K<br>​​<br>​​ </p>
+<p>where K is the number of nonzero terms in the polynomial, N<br>​i<br>​​  and a<br>​N<br>​i<br>​​<br>​​  (i=1,2,⋯,K) are the exponents and coefficients, respectively. It is given that 1≤K≤10，0≤N<br>​K<br>​​ &lt;⋯&lt;N<br>​2<br>​​ &lt;N<br>​1<br>​​ ≤1000.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case you should output the sum of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate to 1 decimal place.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h2><p>2 1 2.4 0 3.2</p>
+<p>2 2 1.5 1 0.5</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h2><p>3 2 1.5 1 2.9 0 3.2</p>
+<h2 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h2><p>count的大小不能在输入时就判断，因为一正一负抵消为0的情况比较难处理</p>
+<h2 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h2><p>```C++<br>#include<cstdio><br>const int maxn=1005;<br>double a[maxn];<br>int main()<br>{<br>    int n,k,count=0;<br>    double p=0.0;<br>    for(int i=0;i&lt;2;i++)<br>    {<br>        scanf(“%d”,&amp;n);<br>        for(int j=0;j&lt;n;j++)<br>        {<br>            scanf(“%d”,&amp;k);<br>            scanf(“%lf”,&amp;p);<br>            a[k]+=p;<br>        }<br>    }<br>    for(int i=0;i&lt;maxn;i++)<br>    {<br>        if(a[i]!=0)<br>        count++;<br>    }<br>    if(count==0)<br>    printf(“0\n”);<br>    else<br>    printf(“%d “,count);<br>    int q=maxn-1,z=1;<br>    while(q&gt;=0)<br>    {<br>        if(a[q]!=0&amp;&amp;z==count)<br>        {<br>            printf(“%d %.1f\n”,q,a[q]);<br>            z++;<br>            break;<br>        }<br>        if(a[q]!=0)<br>        {<br>            printf(“%d %.1f “,q,a[q]);<br>            z++;<br>        }<br>        q–;<br>    }<br>}</p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>简单模拟</tag>
+      </tags>
+  </entry>
 </search>
